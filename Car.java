@@ -1,5 +1,7 @@
 public class Car extends Vehicle implements Rentable {
     private int numSeats;
+    
+    // much comments
 
     public Car(String make, String model, int year, int numSeats) {
         super(make, model, year);
