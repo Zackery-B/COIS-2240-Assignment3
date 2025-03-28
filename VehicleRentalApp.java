@@ -7,7 +7,7 @@ public class VehicleRentalApp {
         RentalSystem rentalSystem = RentalSystem.getInstance();
 
         while (true) {
-        	System.out.println("1: Add Vehicle\n2: Add Customer\n3: Rent Vehicle\n4: Return Vehicle\n5: Display Available Vehicles\n6: Show Rental History\n7: Exit");
+        	System.out.print("1: Add Vehicle\n2: Add Customer\n3: Rent Vehicle\n4: Return Vehicle\n5: Display Available Vehicles\n6: Show Rental History\n0: Exit\nMake selection: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
