@@ -48,5 +48,27 @@ public abstract class Vehicle {
     public String getInfo() {
         return "| " + licensePlate + " | " + make + " | " + model + " | " + year + " | " + status + " |";
     }
+    
+    private boolean validPlate(String plate) {
+    	boolean isValid = true;
+    	
+    	// test general errors 
+    	if (plate == null || plate.length() != 6)
+    		isValid = false;
+    	
+    	// Confirm the first 3 letters 
+    	for (int i = 0; i < 3 && isValid; i++ ){
+    		if (Character.isLetter(plate.charAt(i)))
+    			isValid = false;
+    	}
+    	
+    	// Confirm the last 3 numbers 
+    	for (int i = 3; i < 3 && isValid; i++ ){
+    		if (Character.isDigit(plate.charAt(i)))
+    			isValid = false;
+    	}
+    	
+    	return isValid;
+    }
 
 }
