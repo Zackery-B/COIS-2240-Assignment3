@@ -29,7 +29,7 @@ public abstract class Vehicle {
 
     public void setLicensePlate(String plate) {
     	plate = plate == null ? null : plate.toUpperCase();
-    	boolean isValid = this.validPlate(plate); // use validPlate method 
+    	boolean isValid = this.isValidPlate(plate); // use validPlate method 
     	
     	if (isValid)
     		this.licensePlate = plate;
@@ -55,7 +55,7 @@ public abstract class Vehicle {
         return "| " + licensePlate + " | " + make + " | " + model + " | " + year + " | " + status + " |";
     }
     
-    private boolean validPlate(String plate) {
+    private boolean isValidPlate(String plate) {
     	boolean isValid = true;
     	
     	// test general errors 
