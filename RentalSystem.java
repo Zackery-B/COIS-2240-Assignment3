@@ -21,10 +21,12 @@ public class RentalSystem {
     
     public void addVehicle(Vehicle vehicle) {
         vehicles.add(vehicle);
+        saveVehicle(vehicle);
     }
 
     public void addCustomer(Customer customer) {
         customers.add(customer);
+        saveCustomer(customer);
     }
 
     public void rentVehicle(Vehicle vehicle, Customer customer, LocalDate date, double amount) {
@@ -32,6 +34,7 @@ public class RentalSystem {
             vehicle.setStatus(Vehicle.VehicleStatus.RENTED);
             rentalHistory.addRecord(new RentalRecord(vehicle, customer, date, amount, "RENT"));
             System.out.println("Vehicle rented to " + customer.getCustomerName());
+            saveRecord(rentalHistory.getRentalHistory().getLast());
         }
         else {
             System.out.println("Vehicle is not available for renting.");
@@ -43,6 +46,7 @@ public class RentalSystem {
             vehicle.setStatus(Vehicle.VehicleStatus.AVAILABLE);
             rentalHistory.addRecord(new RentalRecord(vehicle, customer, date, extraFees, "RETURN"));
             System.out.println("Vehicle returned by " + customer.getCustomerName());
+            saveRecord(rentalHistory.getRentalHistory().getLast());
         }
         else {
             System.out.println("Vehicle is not rented.");
@@ -101,4 +105,28 @@ public class RentalSystem {
                 return c;
         return null;
     }
+    
+    // [9 Points] Currently, all vehicle, customer, and rental record details are lost upon exiting the program.
+    // To address this, implement the following methods in the RentalSystem class. Each method should write to
+    // the file in append mode to preserve existing entries.
+    // a.	saveVehicle(Vehicle vehicle): adds vehicle details to vehicles.txt. Called inside addVehicle(...).
+    // b.	saveCustomer(Customer customer): adds customer details to customers.txt. Called inside addCustomer(...).
+    // c.	saveRecord(RentalRecord record): adds rental record details to rental_records.txt. Called at the end of
+    //			rentVehicle(...) and returnVehicle(...) after a record is added to the rental history.
+    
+    // adds vehicle details to vehicles.txt
+    public void saveVehicle (Vehicle vehicle) {
+    	
+    }
+    
+    // adds customer details to customer.txt
+    public void saveCustomer (Customer customer) {
+    	
+    }
+    
+    // adds rental record details to rental_records.txt
+    public void saveRecord (RentalRecord record) {
+    	
+    }
+
 }
