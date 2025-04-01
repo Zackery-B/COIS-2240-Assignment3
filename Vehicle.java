@@ -64,16 +64,16 @@ public abstract class Vehicle {
     	
     	// Confirm the first 3 letters 
     	for (int i = 0; i < 3 && isValid; i++ ){
-    		if (Character.isLetter(plate.charAt(i)))
+    		if (!Character.isLetter(plate.charAt(i))) // check if not letter 
     			isValid = false;
     	}
     	
     	// Confirm the last 3 numbers 
-    	for (int i = 3; i < 3 && isValid; i++ ){
-    		if (Character.isDigit(plate.charAt(i)))
+    	for (int i = 3; i < 6 && isValid; i++ ){
+    		if (!Character.isDigit(plate.charAt(i))) // check if not number 
     			isValid = false;
     	}
-    	
+    	    	
     	return isValid;
     }
 
