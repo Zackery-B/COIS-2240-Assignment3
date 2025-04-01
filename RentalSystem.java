@@ -28,7 +28,7 @@ public class RentalSystem {
     		return true;
     	}
     	else {
-    		System.out.print("Invalid; Plate already exists");
+    		System.out.println("Invalid; Plate already exists");
     		return false;
     	} 		
     }
@@ -42,7 +42,7 @@ public class RentalSystem {
     		return true;
     	}
     	else {
-    		System.out.print("Invalid; ID already exists");
+    		System.out.println("Invalid; ID already exists");
     		return false;
     	}
     }
