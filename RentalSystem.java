@@ -19,8 +19,18 @@ public class RentalSystem {
     	return instance;
     }
     
-    public void addVehicle(Vehicle vehicle) {
-        vehicles.add(vehicle);
+    public boolean addVehicle(Vehicle vehicle) {
+        
+    	Vehicle duplicate = findVehicleByPlate(vehicle.getLicensePlate());
+    	
+    	if (duplicate == null) {
+    		vehicles.add(vehicle);
+    		return true;
+    	}
+    	else {
+    		System.out.print("Invalid; Plate already exists");
+    		return false;
+    	} 		
     }
 
     public void addCustomer(Customer customer) {
