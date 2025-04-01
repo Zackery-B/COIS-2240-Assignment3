@@ -19,12 +19,32 @@ public class RentalSystem {
     	return instance;
     }
     
-    public void addVehicle(Vehicle vehicle) {
-        vehicles.add(vehicle);
+    public boolean addVehicle(Vehicle vehicle) {
+        
+    	Vehicle duplicate = findVehicleByPlate(vehicle.getLicensePlate());
+    	
+    	if (duplicate == null) {
+    		vehicles.add(vehicle);
+    		return true;
+    	}
+    	else {
+    		System.out.println("Invalid; Plate already exists");
+    		return false;
+    	} 		
     }
 
-    public void addCustomer(Customer customer) {
-        customers.add(customer);
+    public boolean addCustomer(Customer customer) {
+        
+    	Customer duplicate = findCustomerById(customer.getCustomerId());
+    	
+    	if (duplicate == null) {
+    		customers.add(customer);
+    		return true;
+    	}
+    	else {
+    		System.out.println("Invalid; ID already exists");
+    		return false;
+    	}
     }
 
     public void rentVehicle(Vehicle vehicle, Customer customer, LocalDate date, double amount) {
