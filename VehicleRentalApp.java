@@ -61,8 +61,9 @@ public class VehicleRentalApp {
                     System.out.print("Enter customer ID: ");
                     int cid = scanner.nextInt();
                     System.out.print("Enter name: ");
+                    scanner.nextLine(); //throw away the \n not consumed by nextInt()
                     String cname = scanner.nextLine();
-
+                    
                     rentalSystem.addCustomer(new Customer(cid, cname));
                     System.out.println("Customer added.");
                     break;
