@@ -28,7 +28,13 @@ public abstract class Vehicle {
     }
 
     public void setLicensePlate(String plate) {
-        this.licensePlate = plate == null ? null : plate.toUpperCase();
+    	plate = plate == null ? null : plate.toUpperCase();
+    	boolean isValid = this.validPlate(plate); // use validPlate method 
+    	
+    	if (isValid)
+    		this.licensePlate = plate;
+    	else
+    		throw new IllegalArgumentException("Invalid; plate is not correct format"); 
     }
 
     public void setStatus(VehicleStatus status) {
