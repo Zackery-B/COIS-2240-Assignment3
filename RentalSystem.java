@@ -1,4 +1,8 @@
 import java.util.List;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -116,17 +120,41 @@ public class RentalSystem {
     
     // adds vehicle details to vehicles.txt
     public void saveVehicle (Vehicle vehicle) {
-    	
+    	File file = new File ("./Save Data/vehicles.txt");
+    	try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+			bw.write(vehicle.getInfo());
+			bw.newLine();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
     
     // adds customer details to customer.txt
     public void saveCustomer (Customer customer) {
-    	
+    	File file = new File ("./Save Data/customer.txt");
+    	try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+			bw.write(customer.toString());
+			bw.newLine();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
     
     // adds rental record details to rental_records.txt
     public void saveRecord (RentalRecord record) {
-    	
+    	File file = new File ("./Save Data/rental_records.txt");
+    	try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+			bw.write(record.toString());
+			bw.newLine();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
 }
