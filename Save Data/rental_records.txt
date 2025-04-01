@@ -1,0 +1,2 @@
+RENT | Plate: ABCD 123 | Customer: Zack | Date: 2025-04-01 | Amount: $2000.0
+RETURN | Plate: ABCD 123 | Customer: Zack | Date: 2025-04-01 | Amount: $12.0
