@@ -13,7 +13,7 @@ public class RentalSystem {
     private List<Customer> customers = new ArrayList<>();
     private RentalHistory rentalHistory = new RentalHistory();
     
-    private RentalSystem(){} // private constructor 
+    private RentalSystem(){loadData();} // private constructor 
     
     // getter for instance of itself 
     public static RentalSystem getInstance() {
@@ -111,7 +111,7 @@ public class RentalSystem {
     }
     
     // adds vehicle details to vehicles.txt
-    public void saveVehicle (Vehicle vehicle) {
+    private void saveVehicle (Vehicle vehicle) {
     	File file = new File ("./Save Data/vehicles.txt");
     	try {
     		boolean isNewFile = !file.exists();
@@ -129,7 +129,7 @@ public class RentalSystem {
     }
     
     // adds customer details to customer.txt
-    public void saveCustomer (Customer customer) {
+    private void saveCustomer (Customer customer) {
     	File file = new File ("./Save Data/customer.txt");
     	try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
@@ -142,7 +142,7 @@ public class RentalSystem {
     }
     
     // adds rental record details to rental_records.txt
-    public void saveRecord (RentalRecord record) {
+    private void saveRecord (RentalRecord record) {
     	File file = new File ("./Save Data/rental_records.txt");
     	try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
@@ -152,6 +152,30 @@ public class RentalSystem {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+    }
+    
+    // load save data into respective lists
+    private void loadData() {
+    	File file; // file to retrieve data from
+    	
+    	// load vehicle data from vehicles.txt
+    	file = new File ("./Save Data/vehicles.txt");
+    	if (file.exists()) {
+    		
+    	}
+    	
+    	// load customer data from customer.txt
+    	file = new File ("./Save Data/customer.txt");
+    	if (file.exists()) {
+    		
+    	}
+    	
+    	// load records from rental_records.txt
+    	file = new File ("./Save Data/rental_records.txt");
+    	if (file.exists()) {
+    		
+    	}
+    	
     }
 
 }
