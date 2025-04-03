@@ -110,19 +110,16 @@ public class RentalSystem {
         return null;
     }
     
-    // [9 Points] Currently, all vehicle, customer, and rental record details are lost upon exiting the program.
-    // To address this, implement the following methods in the RentalSystem class. Each method should write to
-    // the file in append mode to preserve existing entries.
-    // a.	saveVehicle(Vehicle vehicle): adds vehicle details to vehicles.txt. Called inside addVehicle(...).
-    // b.	saveCustomer(Customer customer): adds customer details to customers.txt. Called inside addCustomer(...).
-    // c.	saveRecord(RentalRecord record): adds rental record details to rental_records.txt. Called at the end of
-    //			rentVehicle(...) and returnVehicle(...) after a record is added to the rental history.
-    
     // adds vehicle details to vehicles.txt
     public void saveVehicle (Vehicle vehicle) {
     	File file = new File ("./Save Data/vehicles.txt");
     	try {
+    		boolean isNewFile = !file.exists();
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+    		if (isNewFile) {
+    			bw.write("| License Plate | Make | Model | Year | Status | | Other\n--------------------------------------------------------");
+    			bw.newLine();
+    		}
 			bw.write(vehicle.getInfo());
 			bw.newLine();
 			bw.close();

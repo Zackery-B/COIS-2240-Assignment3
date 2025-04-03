@@ -1,3 +1,4 @@
-| NULL | Void | Gap | 0 | AVAILABLE | | Seats: 0
-| APPLE 910 | Crunchy | Golden | 777 | AVAILABLE | | Seats: 7
-| ABCD 123 | Toyota | Corolla | 2012 | AVAILABLE | | Seats: 4
+| License Plate | Make | Model | Year | Status | | Other
+--------------------------------------------------------
+| BAD123 | Bad | Pass | 2024 | AVAILABLE | | Seats: 4
+| CUP134 | Sipee | Cup | 2324 | AVAILABLE | | Seats: 4
