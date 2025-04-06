@@ -1,0 +1,6 @@
+License Plate | Make | Model | Year | Status | Other
+--------------------------------------------------------
+AAA333 | Toyota | Corolla | 2036 | AVAILABLE | Seats: 4
+CCC333 | Toyota | Corolla | 2022 | AVAILABLE | Seats: 6
+DDD444 | Nissan | Sentra | 2006 | AVAILABLE | Sidecar: Yes
+EEE555 | Nissan | Fish | 2000 | AVAILABLE | Seats: 0

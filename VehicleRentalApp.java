@@ -37,12 +37,12 @@ public class VehicleRentalApp {
                         System.out.print("Has sidecar? (true/false): ");
                         boolean sidecar = scanner.nextBoolean();
                         vehicle = new Motorcycle(make, model, year, sidecar);
-                        System.out.print("Motorcycle added successfuly.");
+                        System.out.println("Motorcycle added successfuly.");
 		            } else if (type == 3) {
 		                System.out.print("Enter the cargo capacity: ");
 		                double cargoCapacity = scanner.nextDouble();
 		                vehicle = new Truck(make, model, year, cargoCapacity);
-		                System.out.print("Truck added successfuly.");
+		                System.out.println("Truck added successfuly.");
 		            } else {
 		            	vehicle = null;
 		            }
@@ -98,7 +98,7 @@ public class VehicleRentalApp {
 
                 case 4:
                 	System.out.println("List of Vehicles:");
-                	rentalSystem.displayAvailableVehicles();
+                	rentalSystem.displayRentedVehicles();
 
                 	System.out.print("Enter license plate: ");
                     String returnPlate = scanner.nextLine().toUpperCase();

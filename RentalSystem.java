@@ -67,6 +67,18 @@ public class RentalSystem {
             }
         }
         System.out.println();
+    }    
+
+    public void displayRentedVehicles() {
+    	System.out.println("|     Type         |\tPlate\t|\tMake\t|\tModel\t|\tYear\t|");
+    	System.out.println("---------------------------------------------------------------------------------");
+    	 
+        for (Vehicle v : vehicles) {
+            if (v.getStatus() == Vehicle.VehicleStatus.RENTED) {
+                System.out.println("|     " + (v instanceof Car ? "Car          " : "Motorcycle   ") + "|\t" + v.getLicensePlate() + "\t|\t" + v.getMake() + "\t|\t" + v.getModel() + "\t|\t" + v.getYear() + "\t|\t");
+            }
+        }
+        System.out.println();
     }
     
     public void displayAllVehicles() {
@@ -134,6 +146,10 @@ public class RentalSystem {
     	try {
     		boolean isNewFile = !file.exists();
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+    		if (isNewFile) {
+    			bw.write("ID | Name\n---------");
+    			bw.newLine();
+    		}
 			bw.write(customer.toString());
 			bw.newLine();
 			bw.close();
@@ -157,7 +173,9 @@ public class RentalSystem {
     
     // load save data into respective lists
     private void loadData() {
-    	File file; // file to retrieve data from
+    	
+    	// file to retrieve data from
+    	File file;
     	
     	// create directory to save data if it doesn't exist
     	File dir = new File ("./Save Data");
