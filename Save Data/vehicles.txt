@@ -1,4 +1,5 @@
 | License Plate | Make | Model | Year | Status | | Other
 --------------------------------------------------------
-| BAD123 | Bad | Pass | 2024 | AVAILABLE | | Seats: 4
+| BAD123 | Bad | Pass | 2024 | AVAILABLE | | Seats: 3
 | CUP134 | Sipee | Cup | 2324 | AVAILABLE | | Seats: 4
+| ABC123 | Pineapple | Pen | 2009 | AVAILABLE | | Seats: 6
