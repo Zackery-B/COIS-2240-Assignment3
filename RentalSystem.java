@@ -177,11 +177,11 @@ public class RentalSystem {
     			    			
     			Vehicle vehicle = null;
     			
-	    		switch (vehicleData[vehicleData.length-1]) { 
-	    			case " Car" :
+	    		switch (vehicleData[1]) { 
+	    			case "Car" :
 	    				
 	    				// remove the "seats :" and trim the integer
-	    				int numSeats = Integer.parseInt(vehicleData[6].split(":")[2].trim());
+	    				int numSeats = Integer.parseInt(vehicleData[6].split(":")[1].trim());
 	    				
 	    				// create the car with all needed values 
 	    				vehicle = new Car(vehicleData[2],vehicleData[3],Integer.parseInt(vehicleData[4]),numSeats);
@@ -199,12 +199,12 @@ public class RentalSystem {
 	    				}
 	    				
 	    				// create the motorcycle with all needed values 
-	    				vehicle = new Motorcycle(vehicleData[2],vehicleData[2],Integer.parseInt(vehicleData[3]),hasSideCare);
+	    				vehicle = new Motorcycle(vehicleData[2],vehicleData[3],Integer.parseInt(vehicleData[4]),hasSideCare);
 	    					
 	    				break;
 	    				
 	    			case "Truck" :
-	    				float cargoCapacity = Float.parseFloat(vehicleData[6].split(":")[2].trim());
+	    				float cargoCapacity = Float.parseFloat(vehicleData[6].split(":")[1].trim());
 	    				// create the truck with all needed values
 	    				vehicle = new Truck(vehicleData[2],vehicleData[3],Integer.parseInt(vehicleData[4]),cargoCapacity);
 	    				
@@ -213,6 +213,7 @@ public class RentalSystem {
 	    		
 	    		if (vehicle != null) {
 		    		vehicle.setLicensePlate(vehicleData[0]);
+		    		// set status --------------------------------
 		    		this.vehicles.add(vehicle);
 	    		}else {
 	    			System.out.println("Error in vehicle list");
