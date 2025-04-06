@@ -1,6 +1,8 @@
 import java.util.List;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -183,6 +185,17 @@ public class RentalSystem {
     		
     	}
     	
+    	
+    	
+    	
+    }
+    
+    private list[] readFile(String path) {
+    	BufferedReader reader = new BufferedReader(new FileReader(path));
+    	String line;
+    	while((line = reader.readLine()) != null) {
+    		
+    	}
     }
 
 }
