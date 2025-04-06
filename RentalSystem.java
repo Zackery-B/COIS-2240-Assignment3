@@ -190,12 +190,30 @@ public class RentalSystem {
     	
     }
     
-    private list[] readFile(String path) {
-    	BufferedReader reader = new BufferedReader(new FileReader(path));
-    	String line;
-    	while((line = reader.readLine()) != null) {
-    		
+    // reads a file and returns all the data in a 2D list 
+    private ArrayList<String[]> readFile(String path) {
+    	ArrayList<String[]> lines = new ArrayList<>();
+    	
+    	try {
+	    	BufferedReader reader = new BufferedReader(new FileReader(path));
+	    	String line;
+	    	String[] values;
+	    	
+	    	while((line = reader.readLine()) != null) {
+	    		values = line.split("|"); // separate all data into a list 
+	    		
+	    		// remove all white space 
+	    		for (String value : values)
+	    				value.trim();	
+	    		
+	    		// add to data list 
+	    		lines.add(values);
+	    		}
+    	}catch(IOException e){
+    		e.printStackTrace();
     	}
+    	
+    	return lines;
     }
 
 }
