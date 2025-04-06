@@ -170,7 +170,26 @@ public class RentalSystem {
     	// load vehicle data from vehicles.txt
     	file = new File ("./Save Data/vehicles.txt");
     	if (file.exists()) {
+    		ArrayList<String[]> vehicleData = new ArrayList<>();
     		
+    		for (String[] vehicle :  vehicleData) {
+	    		switch (vehicle[5]) {
+	    			case "Car" :
+	    				// remove the "seats :" and trim the integer
+	    				int seats = Integer.parseInt(vehicle[5].split(":")[1].trim());
+	    				
+	    				Car car = new Car(vehicle[1],vehicle[2],Integer.parseInt(vehicle[3]),seats);
+	    				break;
+	    			
+	    			case "Motorcycle" :
+	    				Motorcycle motorcycle = new Motorcycle();
+	    				break;
+	    				
+	    			case "Truck" :
+	    				Truck truck = new Truck();
+	    				break;
+	    		}
+    		}
     	}
     	
     	// load customer data from customer.txt
