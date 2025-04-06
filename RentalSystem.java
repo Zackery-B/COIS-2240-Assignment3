@@ -132,6 +132,7 @@ public class RentalSystem {
     private void saveCustomer (Customer customer) {
     	File file = new File ("./Save Data/customer.txt");
     	try {
+    		boolean isNewFile = !file.exists();
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
 			bw.write(customer.toString());
 			bw.newLine();
@@ -157,6 +158,12 @@ public class RentalSystem {
     // load save data into respective lists
     private void loadData() {
     	File file; // file to retrieve data from
+    	
+    	// create directory to save data if it doesn't exist
+    	File dir = new File ("./Save Data");
+		if (!dir.exists()) {
+			dir.mkdir();
+		}
     	
     	// load vehicle data from vehicles.txt
     	file = new File ("./Save Data/vehicles.txt");
