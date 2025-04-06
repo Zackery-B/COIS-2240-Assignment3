@@ -1,5 +1,4 @@
 ID | Name
 ---------
-Customer ID: 12 | Name: Zack
-Customer ID: 14 | Name: Jasper
-Customer ID: 22 | Name: Ophelia
+Customer ID: 29 | Name: Paul
+Customer ID: 6 | Name: Olivia

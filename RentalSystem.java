@@ -129,7 +129,7 @@ public class RentalSystem {
     		boolean isNewFile = !file.exists();
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
     		if (isNewFile) {
-    			bw.write("License Plate | Make | Model | Year | Status | Other\n--------------------------------------------------------");
+    			bw.write("License Plate | Make | Model | Year | Status | Other\n----------------------------------------------------");
     			bw.newLine();
     		}
 			bw.write(vehicle.getInfo());
@@ -162,7 +162,12 @@ public class RentalSystem {
     private void saveRecord (RentalRecord record) {
     	File file = new File ("./Save Data/rental_records.txt");
     	try {
+    		boolean isNewFile = !file.exists();
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+    		if (isNewFile) {
+    			bw.write("Status | License Plate | Customer | Date | Cost\n-----------------------------------------------");
+    			bw.newLine();
+    		}
 			bw.write(record.toString());
 			bw.newLine();
 			bw.close();

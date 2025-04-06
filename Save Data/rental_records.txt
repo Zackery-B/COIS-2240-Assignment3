@@ -1,4 +1,4 @@
-RENT | Plate: AAA333 | Customer: Zack | Date: 2025-04-06 | Amount: $30000.0
-RETURN | Plate: AAA333 | Customer: Zack | Date: 2025-04-06 | Amount: $250.0
-RENT | Plate: EEE555 | Customer: Ophelia | Date: 2025-04-06 | Amount: $2000.0
-RETURN | Plate: EEE555 | Customer: Ophelia | Date: 2025-04-06 | Amount: $5.0
+Status | License Plate | Customer | Date | Cost
+-----------------------------------------------
+RENT | Plate: QWE123 | Customer: Olivia | Date: 2025-04-06 | Amount: $123456.0
+RETURN | Plate: QWE123 | Customer: Olivia | Date: 2025-04-06 | Amount: $123456.0

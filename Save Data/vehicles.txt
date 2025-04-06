@@ -1,6 +1,4 @@
 License Plate | Make | Model | Year | Status | Other
---------------------------------------------------------
-AAA333 | Toyota | Corolla | 2036 | AVAILABLE | Seats: 4
-CCC333 | Toyota | Corolla | 2022 | AVAILABLE | Seats: 6
-DDD444 | Nissan | Sentra | 2006 | AVAILABLE | Sidecar: Yes
-EEE555 | Nissan | Fish | 2000 | AVAILABLE | Seats: 0
+----------------------------------------------------
+AAA111 | Quaker | Oats | 1906 | AVAILABLE | Seats: 4
+QWE123 | Honey | Comb | 2022 | AVAILABLE | Seats: 6
