@@ -46,7 +46,8 @@ public abstract class Vehicle {
     public VehicleStatus getStatus() { return status; }
 
     public String getInfo() {
-        return licensePlate + " | " + make + " | " + model + " | " + year + " | " + status;
+    	String vehicleType = this.getClass().getSimpleName();
+        return licensePlate + " | " + vehicleType + " | " + make + " | " + model + " | " + year + " | " + status;
     }
 
 }
