@@ -200,15 +200,18 @@ public class RentalSystem {
 	    	String[] values;
 	    	
 	    	while((line = reader.readLine()) != null) {
-	    		values = line.split("|"); // separate all data into a list 
+	    		values = line.split("|"); // separate all values into a list 
 	    		
 	    		// remove all white space 
 	    		for (String value : values)
 	    				value.trim();	
 	    		
-	    		// add to data list 
+	    		// add to lines list 
 	    		lines.add(values);
 	    		}
+	    	
+	    	reader.close();
+	    	
     	}catch(IOException e){
     		e.printStackTrace();
     	}
