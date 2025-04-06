@@ -1,4 +1,8 @@
 import java.util.List;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -9,7 +13,7 @@ public class RentalSystem {
     private List<Customer> customers = new ArrayList<>();
     private RentalHistory rentalHistory = new RentalHistory();
     
-    private RentalSystem(){} // private constructor 
+    private RentalSystem(){loadData();} // private constructor 
     
     // getter for instance of itself 
     public static RentalSystem getInstance() {
@@ -18,13 +22,14 @@ public class RentalSystem {
     	}
     	return instance;
     }
-    
+
     public boolean addVehicle(Vehicle vehicle) {
         
     	Vehicle duplicate = findVehicleByPlate(vehicle.getLicensePlate());
     	
     	if (duplicate == null) {
     		vehicles.add(vehicle);
+    		saveVehicle(vehicle);
     		return true;
     	}
     	else {
@@ -39,6 +44,7 @@ public class RentalSystem {
     	
     	if (duplicate == null) {
     		customers.add(customer);
+            saveCustomer(customer);
     		return true;
     	}
     	else {
@@ -52,6 +58,7 @@ public class RentalSystem {
             vehicle.setStatus(Vehicle.VehicleStatus.RENTED);
             rentalHistory.addRecord(new RentalRecord(vehicle, customer, date, amount, "RENT"));
             System.out.println("Vehicle rented to " + customer.getCustomerName());
+            saveRecord(rentalHistory.getRentalHistory().getLast());
         }
         else {
             System.out.println("Vehicle is not available for renting.");
@@ -63,6 +70,7 @@ public class RentalSystem {
             vehicle.setStatus(Vehicle.VehicleStatus.AVAILABLE);
             rentalHistory.addRecord(new RentalRecord(vehicle, customer, date, extraFees, "RETURN"));
             System.out.println("Vehicle returned by " + customer.getCustomerName());
+            saveRecord(rentalHistory.getRentalHistory().getLast());
         }
         else {
             System.out.println("Vehicle is not rented.");
@@ -75,6 +83,18 @@ public class RentalSystem {
     	 
         for (Vehicle v : vehicles) {
             if (v.getStatus() == Vehicle.VehicleStatus.AVAILABLE) {
+                System.out.println("|     " + (v instanceof Car ? "Car          " : "Motorcycle   ") + "|\t" + v.getLicensePlate() + "\t|\t" + v.getMake() + "\t|\t" + v.getModel() + "\t|\t" + v.getYear() + "\t|\t");
+            }
+        }
+        System.out.println();
+    }    
+
+    public void displayRentedVehicles() {
+    	System.out.println("|     Type         |\tPlate\t|\tMake\t|\tModel\t|\tYear\t|");
+    	System.out.println("---------------------------------------------------------------------------------");
+    	 
+        for (Vehicle v : vehicles) {
+            if (v.getStatus() == Vehicle.VehicleStatus.RENTED) {
                 System.out.println("|     " + (v instanceof Car ? "Car          " : "Motorcycle   ") + "|\t" + v.getLicensePlate() + "\t|\t" + v.getMake() + "\t|\t" + v.getModel() + "\t|\t" + v.getYear() + "\t|\t");
             }
         }
@@ -121,4 +141,91 @@ public class RentalSystem {
                 return c;
         return null;
     }
+    
+    // adds vehicle details to vehicles.txt
+    private void saveVehicle (Vehicle vehicle) {
+    	File file = new File ("./Save Data/vehicles.txt");
+    	try {
+    		boolean isNewFile = !file.exists();
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+    		if (isNewFile) {
+    			bw.write("License Plate | Make | Model | Year | Status | Other\n----------------------------------------------------");
+    			bw.newLine();
+    		}
+			bw.write(vehicle.getInfo());
+			bw.newLine();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    // adds customer details to customer.txt
+    private void saveCustomer (Customer customer) {
+    	File file = new File ("./Save Data/customer.txt");
+    	try {
+    		boolean isNewFile = !file.exists();
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+    		if (isNewFile) {
+    			bw.write("ID | Name\n---------");
+    			bw.newLine();
+    		}
+			bw.write(customer.toString());
+			bw.newLine();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    // adds rental record details to rental_records.txt
+    private void saveRecord (RentalRecord record) {
+    	File file = new File ("./Save Data/rental_records.txt");
+    	try {
+    		boolean isNewFile = !file.exists();
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+    		if (isNewFile) {
+    			bw.write("Status | License Plate | Customer | Date | Cost\n-----------------------------------------------");
+    			bw.newLine();
+    		}
+			bw.write(record.toString());
+			bw.newLine();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    // load save data into respective lists
+    private void loadData() {
+    	
+    	// file to retrieve data from
+    	File file;
+    	
+    	// create directory to save data if it doesn't exist
+    	File dir = new File ("./Save Data");
+		if (!dir.exists()) {
+			dir.mkdir();
+		}
+    	
+    	// load vehicle data from vehicles.txt
+    	file = new File ("./Save Data/vehicles.txt");
+    	if (file.exists()) {
+    		
+    	}
+    	
+    	// load customer data from customer.txt
+    	file = new File ("./Save Data/customer.txt");
+    	if (file.exists()) {
+    		
+    	}
+    	
+    	// load records from rental_records.txt
+    	file = new File ("./Save Data/rental_records.txt");
+    	if (file.exists()) {
+    		
+    	}
+    	
+    }
+
 }
