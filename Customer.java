@@ -17,6 +17,10 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer ID: " + customerId + " | Name: " + name;
+        return customerId + " | " + name;
+    }
+
+    public String toSaveString() {
+        return customerId + " | " + name;
     }
 }

@@ -1,4 +1,3 @@
 Status | License Plate | Customer | Date | Cost
 -----------------------------------------------
-RENT | Plate: QWE123 | Customer: Olivia | Date: 2025-04-06 | Amount: $123456.0
-RETURN | Plate: QWE123 | Customer: Olivia | Date: 2025-04-06 | Amount: $123456.0
+RENT | BBB222 | Amogus | 2025-04-06 | 250.0

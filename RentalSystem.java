@@ -95,7 +95,7 @@ public class RentalSystem {
     	 
         for (Vehicle v : vehicles) {
             if (v.getStatus() == Vehicle.VehicleStatus.RENTED) {
-                System.out.println("|     " + (v instanceof Car ? "Car          " : "Motorcycle   ") + "|\t" + v.getLicensePlate() + "\t|\t" + v.getMake() + "\t|\t" + v.getModel() + "\t|\t" + v.getYear() + "\t|\t");
+                System.out.println("|     " + (v instanceof Car ? "Car          " : (v instanceof Motorcycle ? "Motorcycle   " : "Truck        ")) + "|\t" + v.getLicensePlate() + "\t|\t" + v.getMake() + "\t|\t" + v.getModel() + "\t|\t" + v.getYear() + "\t|\t");
             }
         }
         System.out.println();
@@ -149,7 +149,7 @@ public class RentalSystem {
     		boolean isNewFile = !file.exists();
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
     		if (isNewFile) {
-    			bw.write("License Plate | Type | Make | Model | Year | Status | Other\n----------------------------------------------------");
+    			bw.write("License Plate | Type | Make | Model | Year | Status | Other\n-----------------------------------------------------------");
     			bw.newLine();
     		}
 			bw.write(vehicle.getInfo());
@@ -170,7 +170,7 @@ public class RentalSystem {
     			bw.write("ID | Name\n---------");
     			bw.newLine();
     		}
-			bw.write(customer.toString());
+			bw.write(customer.toSaveString());
 			bw.newLine();
 			bw.close();
 		} catch (IOException e) {
@@ -188,7 +188,7 @@ public class RentalSystem {
     			bw.write("Status | License Plate | Customer | Date | Cost\n-----------------------------------------------");
     			bw.newLine();
     		}
-			bw.write(record.toString());
+			bw.write(record.toSaveString());
 			bw.newLine();
 			bw.close();
 		} catch (IOException e) {

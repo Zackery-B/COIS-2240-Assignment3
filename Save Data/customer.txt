@@ -1,4 +1,4 @@
 ID | Name
 ---------
-Customer ID: 29 | Name: Paul
-Customer ID: 6 | Name: Olivia
+12 | Amogus
+15 | BK

@@ -1,6 +1,6 @@
 License Plate | Type | Make | Model | Year | Status | Other
-----------------------------------------------------
-AAA111 | Car | Quaker | Oats | 1906 | AVAILABLE | Seats: 4
-QWE123 | Car | Honey | Comb | 2022 | AVAILABLE | Seats: 6
-ACG983 | Car | Testing | Addvehicleclass | 2014 | AVAILABLE | Seats: 34
-ACD275 | Car | Second | Testfortype | 2345 | AVAILABLE | Seats: 3
+-----------------------------------------------------------
+AAA111 | Car | Toyota | Corolla | 2001 | AVAILABLE | Seats: 1
+BBB222 | Motorcycle | Yamaha | Tuba | 2002 | AVAILABLE | Sidecar: Yes
+CCC333 | Truck | Amazon | Delivery | 2003 | AVAILABLE | Cargo Capacity: 400.0
+DDD444 | Truck | Proche | Rock | 2004 | AVAILABLE | Cargo Capacity: 999.0
