@@ -149,7 +149,7 @@ public class RentalSystem {
     		boolean isNewFile = !file.exists();
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
     		if (isNewFile) {
-    			bw.write("License Plate | Make | Model | Year | Status | Other\n----------------------------------------------------");
+    			bw.write("License Plate | Type | Make | Model | Year | Status | Other\n----------------------------------------------------");
     			bw.newLine();
     		}
 			bw.write(vehicle.getInfo());
