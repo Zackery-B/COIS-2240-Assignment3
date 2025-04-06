@@ -177,7 +177,7 @@ public class RentalSystem {
     			
     			Vehicle vehicle = null; 
     			
-	    		switch (vehicleData[5]) {
+	    		switch (vehicleData[vehicleData.length-1]) { // there is no type --------- problem 
 	    			case "Car" :
 	    				// remove the "seats :" and trim the integer
 	    				int numSeats = Integer.parseInt(vehicleData[5].split(":")[1].trim());
@@ -218,7 +218,12 @@ public class RentalSystem {
     	// load customer data from customer.txt
     	file = new File ("./Save Data/customer.txt");
     	if (file.exists()) {
+    		ArrayList<String[]> allCustomerData = new ArrayList<>();
+    		allCustomerData = readFile("./Save Data/customer.txt"); // read data from file
     		
+    		for (String[] customerData : allCustomerData) {
+    			// clean and save 
+    		}
     	}
     	
     	// load records from rental_records.txt
@@ -250,7 +255,7 @@ public class RentalSystem {
 	    		
 	    		// add to lines list 
 	    		lines.add(values);
-	    		}
+	    	}
 	    	
 	    	reader.close();
 	    	
@@ -258,7 +263,9 @@ public class RentalSystem {
     		e.printStackTrace();
     	}
     	
-    	return lines;
+    	lines.remove(0); //remove the header line 
+    	lines.remove(1); //remove the separator line 
+    	return lines; 
     }
 
 }
