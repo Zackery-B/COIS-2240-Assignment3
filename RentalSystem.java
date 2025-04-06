@@ -172,18 +172,19 @@ public class RentalSystem {
     	if (file.exists()) {
     		ArrayList<String[]> allVehicleData = new ArrayList<>();
     		allVehicleData = readFile("./Save Data/vehicles.txt"); // read data from file
-    		
+    				
     		for (String[] vehicleData :  allVehicleData) {
+    			    			
+    			Vehicle vehicle = null;
     			
-    			Vehicle vehicle = null; 
-    			
-	    		switch (vehicleData[vehicleData.length-1]) { // there is no type --------- problem 
-	    			case "Car" :
+	    		switch (vehicleData[vehicleData.length-1]) { 
+	    			case " Car" :
+	    				
 	    				// remove the "seats :" and trim the integer
-	    				int numSeats = Integer.parseInt(vehicleData[5].split(":")[1].trim());
+	    				int numSeats = Integer.parseInt(vehicleData[6].split(":")[2].trim());
 	    				
 	    				// create the car with all needed values 
-	    				vehicle = new Car(vehicleData[1],vehicleData[2],Integer.parseInt(vehicleData[3]),numSeats);
+	    				vehicle = new Car(vehicleData[2],vehicleData[3],Integer.parseInt(vehicleData[4]),numSeats);
 	    				
 	    				break;
 	    			
@@ -191,27 +192,31 @@ public class RentalSystem {
 	    				boolean hasSideCare;
 	    				
 	    				// clean hasSideCare
-	    				if (vehicleData[5] == "Sidecar: Yes") {
+	    				if (vehicleData[6] == "Sidecar: Yes") {
 	    					hasSideCare = true;
 	    				}else {
 	    					hasSideCare =false;
 	    				}
 	    				
 	    				// create the motorcycle with all needed values 
-	    				vehicle = new Motorcycle(vehicleData[1],vehicleData[2],Integer.parseInt(vehicleData[3]),hasSideCare);
+	    				vehicle = new Motorcycle(vehicleData[2],vehicleData[2],Integer.parseInt(vehicleData[3]),hasSideCare);
 	    					
 	    				break;
 	    				
 	    			case "Truck" :
-	    				float cargoCapacity = Float.parseFloat(vehicleData[5].split(":")[1].trim());
+	    				float cargoCapacity = Float.parseFloat(vehicleData[6].split(":")[2].trim());
 	    				// create the truck with all needed values
-	    				vehicle = new Truck(vehicleData[1],vehicleData[2],Integer.parseInt(vehicleData[3]),cargoCapacity);
+	    				vehicle = new Truck(vehicleData[2],vehicleData[3],Integer.parseInt(vehicleData[4]),cargoCapacity);
 	    				
 	    				break;
 	    		}
 	    		
-	    		vehicle.setLicensePlate(vehicleData[0]);
-	    		this.vehicles.add(vehicle);
+	    		if (vehicle != null) {
+		    		vehicle.setLicensePlate(vehicleData[0]);
+		    		this.vehicles.add(vehicle);
+	    		}else {
+	    			System.out.println("Error in vehicle list");
+	    		}
     		}
     	}
     	
@@ -229,7 +234,12 @@ public class RentalSystem {
     	// load records from rental_records.txt
     	file = new File ("./Save Data/rental_records.txt");
     	if (file.exists()) {
+    		ArrayList<String[]> allRecordsData = new ArrayList<>();
+    		allRecordsData = readFile("./Save Data/customer.txt"); // read data from file
     		
+    		for (String[] recordsData : allRecordsData) {
+    			// clean and save 
+    		}
     	}
     	
     	
@@ -245,14 +255,15 @@ public class RentalSystem {
 	    	BufferedReader reader = new BufferedReader(new FileReader(path));
 	    	String line;
 	    	String[] values;
-	    	
+	    		    	
 	    	while((line = reader.readLine()) != null) {
-	    		values = line.split("|"); // separate all values into a list 
 	    		
-	    		// remove all white space 
-	    		for (String value : values)
-	    				value.trim();	
+	    		values = line.split("\\|"); // separate all values into a list
 	    		
+	    		for (int i =0; i < values.length; i++) {
+	    			values[i] = values[i].trim();
+	    		}
+	    			    			    		
 	    		// add to lines list 
 	    		lines.add(values);
 	    	}
@@ -264,7 +275,8 @@ public class RentalSystem {
     	}
     	
     	lines.remove(0); //remove the header line 
-    	lines.remove(1); //remove the separator line 
+    	lines.remove(0); //remove the separator line
+    	 
     	return lines; 
     }
 

@@ -1,4 +1,4 @@
 License Plate | Make | Model | Year | Status | Other
 ----------------------------------------------------
-AAA111 | Quaker | Oats | 1906 | AVAILABLE | Seats: 4
-QWE123 | Honey | Comb | 2022 | AVAILABLE | Seats: 6
+AAA111 | Car | Quaker | Oats | 1906 | AVAILABLE | Seats: 4
+QWE123 | Car | Honey | Comb | 2022 | AVAILABLE | Seats: 6
