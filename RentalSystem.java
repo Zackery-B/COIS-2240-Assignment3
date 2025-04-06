@@ -171,37 +171,47 @@ public class RentalSystem {
     	file = new File ("./Save Data/vehicles.txt");
     	if (file.exists()) {
     		ArrayList<String[]> allVehicleData = new ArrayList<>();
+    		allVehicleData = readFile("./Save Data/vehicles.txt"); // read data from file
     		
     		for (String[] vehicleData :  allVehicleData) {
     			
-    			Vehicle vehicle; 
+    			Vehicle vehicle = null; 
     			
 	    		switch (vehicleData[5]) {
 	    			case "Car" :
 	    				// remove the "seats :" and trim the integer
-	    				int seats = Integer.parseInt(vehicleData[5].split(":")[1].trim());
+	    				int numSeats = Integer.parseInt(vehicleData[5].split(":")[1].trim());
 	    				
 	    				// create the car with all needed values 
-	    				vehicle = new Car(vehicleData[1],vehicleData[2],Integer.parseInt(vehicleData[3]),seats);
+	    				vehicle = new Car(vehicleData[1],vehicleData[2],Integer.parseInt(vehicleData[3]),numSeats);
 	    				
 	    				break;
 	    			
 	    			case "Motorcycle" :
+	    				boolean hasSideCare;
+	    				
+	    				// clean hasSideCare
+	    				if (vehicleData[5] == "Sidecar: Yes") {
+	    					hasSideCare = true;
+	    				}else {
+	    					hasSideCare =false;
+	    				}
 	    				
 	    				// create the motorcycle with all needed values 
-	    				vehicle = new Motorcycle();
-	    				
+	    				vehicle = new Motorcycle(vehicleData[1],vehicleData[2],Integer.parseInt(vehicleData[3]),hasSideCare);
+	    					
 	    				break;
 	    				
 	    			case "Truck" :
-	    				
+	    				float cargoCapacity = Float.parseFloat(vehicleData[5].split(":")[1].trim());
 	    				// create the truck with all needed values
-	    				vehicle = new Truck();
+	    				vehicle = new Truck(vehicleData[1],vehicleData[2],Integer.parseInt(vehicleData[3]),cargoCapacity);
 	    				
 	    				break;
 	    		}
 	    		
 	    		vehicle.setLicensePlate(vehicleData[0]);
+	    		this.vehicles.add(vehicle);
     		}
     	}
     	
