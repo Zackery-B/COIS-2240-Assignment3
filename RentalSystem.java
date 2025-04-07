@@ -1,6 +1,8 @@
 import java.util.List;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -211,21 +213,117 @@ public class RentalSystem {
     	// load vehicle data from vehicles.txt
     	file = new File ("./Save Data/vehicles.txt");
     	if (file.exists()) {
-    		
+    		ArrayList<String[]> allVehicleData = new ArrayList<>();
+    		allVehicleData = readFile("./Save Data/vehicles.txt"); // read data from file
+    				
+    		for (String[] vehicleData :  allVehicleData) {
+    			    			
+    			Vehicle vehicle = null;
+    			
+	    		switch (vehicleData[1]) { 
+	    			case "Car" :
+	    				
+	    				// remove the "seats :" and trim the integer
+	    				int numSeats = Integer.parseInt(vehicleData[6].split(":")[1].trim());
+	    				
+	    				// create the car with all needed values 
+	    				vehicle = new Car(vehicleData[2],vehicleData[3],Integer.parseInt(vehicleData[4]),numSeats);
+	    				
+	    				break;
+	    			
+	    			case "Motorcycle" :
+	    				boolean hasSideCare;
+	    				
+	    				// clean hasSideCare
+	    				if (vehicleData[6] == "Sidecar: Yes") {
+	    					hasSideCare = true;
+	    				}else {
+	    					hasSideCare =false;
+	    				}
+	    				
+	    				// create the motorcycle with all needed values 
+	    				vehicle = new Motorcycle(vehicleData[2],vehicleData[3],Integer.parseInt(vehicleData[4]),hasSideCare);
+	    					
+	    				break;
+	    				
+	    			case "Truck" :
+	    				float cargoCapacity = Float.parseFloat(vehicleData[6].split(":")[1].trim());
+	    				// create the truck with all needed values
+	    				vehicle = new Truck(vehicleData[2],vehicleData[3],Integer.parseInt(vehicleData[4]),cargoCapacity);
+	    				
+	    				break;
+	    		}
+	    		
+	    		if (vehicle != null) {
+		    		vehicle.setLicensePlate(vehicleData[0]);
+		    		vehicle.setStatus(Vehicle.VehicleStatus.valueOf(vehicleData[5])); 
+		    		this.vehicles.add(vehicle);
+	    		}else {
+	    			System.out.println("Error in vehicle.txt file");
+	    		}
+    		}
     	}
     	
     	// load customer data from customer.txt
     	file = new File ("./Save Data/customer.txt");
     	if (file.exists()) {
+    		ArrayList<String[]> allCustomerData = new ArrayList<>();
+    		allCustomerData = readFile("./Save Data/customer.txt"); // read data from file
     		
+    		for (String[] customerData : allCustomerData) {
+    			Customer customer = new Customer(Integer.parseInt(customerData[0]), customerData[1]);
+    			this.customers.add(customer); // add to list
+    		}
     	}
     	
     	// load records from rental_records.txt
     	file = new File ("./Save Data/rental_records.txt");
     	if (file.exists()) {
+    		ArrayList<String[]> allRecordsData = new ArrayList<>();
+    		allRecordsData = readFile("./Save Data/rental_records.txt"); // read data from file
     		
+    		for (String[] recordsData : allRecordsData) {
+    			RentalRecord record = new RentalRecord(findVehicleByPlate(recordsData[1]), findCustomerByName(recordsData[2]),LocalDate.parse(recordsData[3]),Float.parseFloat(recordsData[4]), recordsData[0]);
+    			rentalHistory.addRecord(record); // add to list
+    		}
     	}
     	
+    	
+    	
+    	
+    }
+    
+    // reads a file and returns all the data in a 2D list 
+    private ArrayList<String[]> readFile(String path) {
+    	ArrayList<String[]> lines = new ArrayList<>();
+    	
+    	try {
+	    	BufferedReader reader = new BufferedReader(new FileReader(path));
+	    	String line;
+	    	String[] values;
+	    		    	
+	    	while((line = reader.readLine()) != null) {
+	    		
+	    		values = line.split("\\|"); // separate all values into a list
+	    		
+	    		for (int i =0; i < values.length; i++) {
+	    			values[i] = values[i].trim();
+	    		}
+	    			    			    		
+	    		// add to lines list 
+	    		lines.add(values);
+	    	}
+	    	
+	    	reader.close();
+	    	
+    	}catch(IOException e){
+    		e.printStackTrace();
+    	}
+    	
+    	lines.remove(0); //remove the header line 
+    	lines.remove(0); //remove the separator line
+    	 
+    	return lines; 
     }
 
 }
