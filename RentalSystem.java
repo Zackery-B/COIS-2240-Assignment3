@@ -85,7 +85,7 @@ public class RentalSystem {
     	 
         for (Vehicle v : vehicles) {
             if (v.getStatus() == Vehicle.VehicleStatus.AVAILABLE) {
-                System.out.println("|     " + (v instanceof Car ? "Car          " : "Motorcycle   ") + "|\t" + v.getLicensePlate() + "\t|\t" + v.getMake() + "\t|\t" + v.getModel() + "\t|\t" + v.getYear() + "\t|\t");
+                System.out.println("|     " + (v instanceof Car ? "Car          " : (v instanceof Motorcycle ? "Motorcycle   " : "Truck        ")) + "|\t" + v.getLicensePlate() + "\t|\t" + v.getMake() + "\t|\t" + v.getModel() + "\t|\t" + v.getYear() + "\t|\t");
             }
         }
         System.out.println();
@@ -309,7 +309,7 @@ public class RentalSystem {
 	    		for (int i =0; i < values.length; i++) {
 	    			values[i] = values[i].trim();
 	    		}
-	    			    			    		
+
 	    		// add to lines list 
 	    		lines.add(values);
 	    	}
