@@ -213,10 +213,10 @@ public class RentalSystem {
 	    		
 	    		if (vehicle != null) {
 		    		vehicle.setLicensePlate(vehicleData[0]);
-		    		// set status --------------------------------
+		    		vehicle.setStatus(Vehicle.VehicleStatus.valueOf(vehicleData[5])); 
 		    		this.vehicles.add(vehicle);
 	    		}else {
-	    			System.out.println("Error in vehicle list");
+	    			System.out.println("Error in vehicle.txt file");
 	    		}
     		}
     	}
@@ -228,7 +228,8 @@ public class RentalSystem {
     		allCustomerData = readFile("./Save Data/customer.txt"); // read data from file
     		
     		for (String[] customerData : allCustomerData) {
-    			// clean and save 
+    			Customer customer = new Customer(Integer.parseInt(customerData[0]), customerData[1]);
+    			this.customers.add(customer); // add to list
     		}
     	}
     	
@@ -236,10 +237,11 @@ public class RentalSystem {
     	file = new File ("./Save Data/rental_records.txt");
     	if (file.exists()) {
     		ArrayList<String[]> allRecordsData = new ArrayList<>();
-    		allRecordsData = readFile("./Save Data/customer.txt"); // read data from file
+    		allRecordsData = readFile("./Save Data/rental_records.txt"); // read data from file
     		
     		for (String[] recordsData : allRecordsData) {
-    			// clean and save 
+    			RentalRecord record = new RentalRecord(findVehicleByPlate(recordsData[1]), findCustomerByName(recordsData[2]),LocalDate.parse(recordsData[3]),Float.parseFloat(recordsData[4]), recordsData[0]);
+    			rentalHistory.addRecord(record); // add to list
     		}
     	}
     	
