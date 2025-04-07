@@ -32,26 +32,28 @@ public class VehicleRentalApp {
                         System.out.print("Enter number of seats: ");
                         int seats = scanner.nextInt();
                         vehicle = new Car(make, model, year, seats);
-                        System.out.println("Car added successfuly.");
+                        //System.out.println("Car added successfully."); // this was part of the base code, it should not be here
                     } else if (type == 2) {
                         System.out.print("Has sidecar? (true/false): ");
                         boolean sidecar = scanner.nextBoolean();
-                        vehicle = new Motorcycle(make, model, year, sidecar);
-                        System.out.println("Motorcycle added successfuly.");
+                        vehicle = new Motorcycle(make, model, year, sidecar); 
+                        // System.out.println("Motorcycle added successfully."); // this was part of the base code, it should not be here
 		            } else if (type == 3) {
 		                System.out.print("Enter the cargo capacity: ");
 		                double cargoCapacity = scanner.nextDouble();
 		                vehicle = new Truck(make, model, year, cargoCapacity);
-		                System.out.println("Truck added successfuly.");
+		                // System.out.println("Truck added successfully."); // this was part of the base code, it should not be here
 		            } else {
 		            	vehicle = null;
 		            }
                     
                     if (vehicle != null){
                     	try {
-	                    vehicle.setLicensePlate(plate);
-	                    rentalSystem.addVehicle(vehicle);
-	                    System.out.println("Vehicle added.");
+		                    vehicle.setLicensePlate(plate);
+		                    if (rentalSystem.addVehicle(vehicle)) // this method should throw a exception, not return a boolean. I did what was requested in the assignment 
+		                    	System.out.println("Vehicle added.");
+		                    else
+		                    	System.out.println("Vehicle not added.");
                     	}
                     	catch (Exception e){
                     		System.out.println(e.getMessage());
