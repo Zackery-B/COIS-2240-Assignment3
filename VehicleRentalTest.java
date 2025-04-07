@@ -14,22 +14,44 @@ class VehicleRentalTest {
 	
 	@Test
 	void testLicensePlateValidation() {
-		Vehicle v1 = new Car(null, null, 0, 0);
-		Vehicle v2 = new Car(null, null, 0, 0);
-		Vehicle v3 = new Car(null, null, 0, 0);
-		Vehicle v4 = new Car(null, null, 0, 0);
+		Vehicle v = new Car(null, null, 0, 0);
 		
-		v1.setLicensePlate("AAA100");	
-		assertTrue(v1.getLicensePlate() == "AAA100");
+		// valid license plates
+		v.setLicensePlate("AAA100");	
+		assertTrue(v.getLicensePlate() == "AAA100");
 		
-		v1.setLicensePlate("ABC567");
-		assertTrue(v1.getLicensePlate() == "ABC567");
+		v.setLicensePlate("ABC567");
+		assertTrue(v.getLicensePlate() == "ABC567");
 		
-		v1.setLicensePlate("ZZZ999");
-		assertTrue(v1.getLicensePlate() == "ZZZ999");
+		v.setLicensePlate("ZZZ999");
+		assertTrue(v.getLicensePlate() == "ZZZ999");
 		
-		assertFalse();
-		assertThrows();
+		// invalid license plates
+
+		assertThrows(Exception.class, () ->
+			v.setLicensePlate("AAA1000"),
+	        "Expected exception to be thrown, but it wasn't"
+	    );
+
+		assertThrows(Exception.class, () ->
+			v.setLicensePlate("ZZZ99"),
+	        "Expected exception to be thrown, but it wasn't"
+	    );
+
+		assertThrows(Exception.class, () ->
+			v.setLicensePlate(""),
+	        "Expected exception to be thrown, but it wasn't"
+	    );
+
+		assertThrows(Exception.class, () ->
+			v.setLicensePlate(null),
+	        "Expected exception to be thrown, but it wasn't"
+	    );
+
+		assertFalse(v.getLicensePlate() == "AAA1000" || v.getLicensePlate() == "ZZZ99" || v.getLicensePlate() == "" || v.getLicensePlate() == null);
+		
+		//assertFalse();
+		//assertThrows();
 
 	}
 
