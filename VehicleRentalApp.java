@@ -7,7 +7,7 @@ public class VehicleRentalApp {
         RentalSystem rentalSystem = RentalSystem.getInstance();
 
         while (true) {
-        	System.out.print("<--Main-Menu-->\n1: Add Vehicle\n2: Add Customer\n3: Rent Vehicle\n4: Return Vehicle\n5: Display Available Vehicles\n6: Show Rental History\n0: Exit\nMake selection: ");
+        	System.out.print("<--Main-Menu-->\n1: Add Vehicle\n2: Add Customer\n3: Rent Vehicle\n4: Return Vehicle\n5: Remove Vehicle\n6: Display Available Vehicles\n7: Show Rental History\n0: Exit\nMake selection: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -133,14 +133,29 @@ public class VehicleRentalApp {
                     break;
                     
                 case 5:
+                    System.out.println("List of Vehicles:");
+                    rentalSystem.displayAvailableVehicles();
+
+                    System.out.print("Enter license plate to remove: ");
+                    String removePlate = scanner.nextLine().toUpperCase();
+
+                    if (rentalSystem.removeVehicle(removePlate)) {
+                        System.out.println("Vehicle removed successfully.");
+                    } else {
+                        System.out.println("Vehicle could not be removed.");
+                    }
+                    break;
+                    
+                case 6:
                     rentalSystem.displayAvailableVehicles();
                     break;
                 
-                case 6:
+                case 7:
                     System.out.println("Rental History:");
                     rentalSystem.displayRentalHistory();
                     break;
-                    
+                   
+
                 case 0:
                 	scanner.close();
                     System.exit(0);

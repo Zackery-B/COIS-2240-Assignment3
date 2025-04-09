@@ -77,7 +77,20 @@ public class RentalSystem {
         else {
             System.out.println("Vehicle is not rented.");
         }
-    }    
+    }
+    
+    public boolean removeVehicle(String licensePlate) {
+        Vehicle vehicleToRemove = findVehicleByPlate(licensePlate);
+        if (vehicleToRemove != null && vehicleToRemove.getStatus() == Vehicle.VehicleStatus.AVAILABLE) {
+            vehicles.remove(vehicleToRemove);
+            System.out.println("Vehicle with plate " + licensePlate + " has been removed.");
+            return true;
+        } else {
+            System.out.println("Vehicle not found or is currently rented.");
+            return false;
+        }
+    }
+
 
     public void displayAvailableVehicles() {
     	System.out.println("|     Type         |\tPlate\t|\tMake\t|\tModel\t|\tYear\t|");
