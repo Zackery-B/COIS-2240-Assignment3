@@ -132,39 +132,12 @@ public class VehicleRentalApp {
                     rentalSystem.returnVehicle(vehicleToReturn, customerToReturn, LocalDate.now(), returnFees);
                     break;
                     
+                
                 case 5:
-                    System.out.println("List of Vehicles:");
-                    rentalSystem.displayAvailableVehicles();
-
-                    System.out.print("Enter license plate to remove: ");
-                    String removePlate = scanner.nextLine().toUpperCase();
-
-                    if (rentalSystem.removeVehicle(removePlate)) {
-                        System.out.println("Vehicle removed successfully.");
-                    } else {
-                        System.out.println("Vehicle could not be removed.");
-                    }
-                    break;
-                    
-                case 6:
-                    System.out.println("Registered Customers:");
-                    rentalSystem.displayAllCustomers();
-
-                    System.out.print("Enter customer name to remove: ");
-                    String nameToRemove = scanner.nextLine();
-
-                    if (rentalSystem.removeCustomer(nameToRemove)) {
-                        System.out.println("Customer removed successfully.");
-                    } else {
-                        System.out.println("Customer could not be removed (may not exist or has ongoing rentals).");
-                    }
-                    break;
-
-                case 7:
                     rentalSystem.displayAvailableVehicles();
                     break;
                 
-                case 8:
+                case 6:
                     System.out.println("Rental History:");
                     rentalSystem.displayRentalHistory();
                     break;

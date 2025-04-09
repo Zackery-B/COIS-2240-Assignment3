@@ -23,13 +23,6 @@ public class RentalRecord {
     	return vehicle;
     }
     
-    public String getRecordType() {
-        return recordType;
-    }
-
-    public LocalDate getRecordDate() {
-        return recordDate;
-    }
 
     @Override
     public String toString() {

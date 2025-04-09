@@ -78,55 +78,7 @@ public class RentalSystem {
             System.out.println("Vehicle is not rented.");
         }
     }
-    
-    public boolean removeVehicle(String licensePlate) {
-        Vehicle vehicleToRemove = findVehicleByPlate(licensePlate);
-        if (vehicleToRemove != null && vehicleToRemove.getStatus() == Vehicle.VehicleStatus.AVAILABLE) {
-            vehicles.remove(vehicleToRemove);
-            System.out.println("Vehicle with plate " + licensePlate + " has been removed.");
-            return true;
-        } else {
-            System.out.println("Vehicle not found or is currently rented.");
-            return false;
-        }
-    }
-    
-    public boolean removeCustomer(String name) {
-        Customer customerToRemove = findCustomerByName(name);
-
-        if (customerToRemove == null) {
-            System.out.println("Customer not found.");
-            return false;
-        }
-        
-        // IGNORE for now
-        // Check if customer has any ongoing rental 
-        /*for (RentalRecord record : rentalHistory.getRentalHistory()) {
-            if (record.getCustomer().equals(customerToRemove) && record.getRecordType().equals("RENT")) {
-                boolean returned = false;
-
-                for (RentalRecord returnRecord : rentalHistory.getRentalHistory()) {
-                    if (returnRecord.getCustomer().equals(customerToRemove)
-                            && returnRecord.getVehicle().equals(record.getVehicle())
-                            && returnRecord.getRecordType().equals("RETURN")
-                            && returnRecord.getRecordDate().isAfter(record.getRecordDate())) {
-                        returned = true;
-                        break;
-                    }
-                }
-
-                if (!returned) {
-                    System.out.println("Customer has an ongoing rental and cannot be removed.");
-                    return false;
-                }
-            }
-        } */
-
-        customers.remove(customerToRemove);
-        System.out.println("Customer " + name + " has been removed.");
-        return true;
-    }
-
+   
 
     public void displayAvailableVehicles() {
     	System.out.println("|     Type         |\tPlate\t|\tMake\t|\tModel\t|\tYear\t|");
