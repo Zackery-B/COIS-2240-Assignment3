@@ -16,17 +16,17 @@ class VehicleRentalTest {
 	
 	@Test
 	void testLicensePlateValidation() {
-		Vehicle v = new Car(null, null, 0, 0);
+		Vehicle v = new Car("Toyota", "Corolla", 2024, 4);
 		
 		// valid license plates
-		v.setLicensePlate("AAA100");	
-		assertTrue(v.getLicensePlate() == "AAA100");
+		v.setLicensePlate("AAA100");
+		assertEquals("AAA100", v.getLicensePlate(), "License plate was not set properly");
 		
 		v.setLicensePlate("ABC567");
-		assertTrue(v.getLicensePlate() == "ABC567");
+		assertEquals("ABC567", v.getLicensePlate(), "License plate was not set properly");
 		
 		v.setLicensePlate("ZZZ999");
-		assertTrue(v.getLicensePlate() == "ZZZ999");
+		assertEquals("ZZZ999", v.getLicensePlate(), "License plate was not set properly");
 		
 		// invalid license plates
 		assertThrows(Exception.class, () ->
