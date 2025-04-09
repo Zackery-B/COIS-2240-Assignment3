@@ -90,6 +90,42 @@ public class RentalSystem {
             return false;
         }
     }
+    
+    public boolean removeCustomer(String name) {
+        Customer customerToRemove = findCustomerByName(name);
+
+        if (customerToRemove == null) {
+            System.out.println("Customer not found.");
+            return false;
+        }
+        
+        // IGNORE for now
+        // Check if customer has any ongoing rental 
+        /*for (RentalRecord record : rentalHistory.getRentalHistory()) {
+            if (record.getCustomer().equals(customerToRemove) && record.getRecordType().equals("RENT")) {
+                boolean returned = false;
+
+                for (RentalRecord returnRecord : rentalHistory.getRentalHistory()) {
+                    if (returnRecord.getCustomer().equals(customerToRemove)
+                            && returnRecord.getVehicle().equals(record.getVehicle())
+                            && returnRecord.getRecordType().equals("RETURN")
+                            && returnRecord.getRecordDate().isAfter(record.getRecordDate())) {
+                        returned = true;
+                        break;
+                    }
+                }
+
+                if (!returned) {
+                    System.out.println("Customer has an ongoing rental and cannot be removed.");
+                    return false;
+                }
+            }
+        } */
+
+        customers.remove(customerToRemove);
+        System.out.println("Customer " + name + " has been removed.");
+        return true;
+    }
 
 
     public void displayAvailableVehicles() {

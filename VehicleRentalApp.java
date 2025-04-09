@@ -7,7 +7,7 @@ public class VehicleRentalApp {
         RentalSystem rentalSystem = RentalSystem.getInstance();
 
         while (true) {
-        	System.out.print("<--Main-Menu-->\n1: Add Vehicle\n2: Add Customer\n3: Rent Vehicle\n4: Return Vehicle\n5: Remove Vehicle\n6: Display Available Vehicles\n7: Show Rental History\n0: Exit\nMake selection: ");
+        	System.out.print("<--Main-Menu-->\n1: Add Vehicle\n2: Add Customer\n3: Rent Vehicle\n4: Return Vehicle\n5: Remove Vehicle\n6: Remove Customer\n7: Display Available Vehicles\n8: Show Rental History\n0: Exit\nMake selection: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -147,10 +147,24 @@ public class VehicleRentalApp {
                     break;
                     
                 case 6:
+                    System.out.println("Registered Customers:");
+                    rentalSystem.displayAllCustomers();
+
+                    System.out.print("Enter customer name to remove: ");
+                    String nameToRemove = scanner.nextLine();
+
+                    if (rentalSystem.removeCustomer(nameToRemove)) {
+                        System.out.println("Customer removed successfully.");
+                    } else {
+                        System.out.println("Customer could not be removed (may not exist or has ongoing rentals).");
+                    }
+                    break;
+
+                case 7:
                     rentalSystem.displayAvailableVehicles();
                     break;
                 
-                case 7:
+                case 8:
                     System.out.println("Rental History:");
                     rentalSystem.displayRentalHistory();
                     break;
