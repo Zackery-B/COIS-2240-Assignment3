@@ -1,11 +1,5 @@
 Status | License Plate | Customer | Date | Cost
 -----------------------------------------------
-RENT | BBB222 | Amogus | 2025-04-06 | 250.0
-RENT | AAA111 | BK | 2025-04-06 | 3.0E9
-RETURN | AAA111 | BK | 2025-04-06 | 5.0E14
-RENT | BBB222 | BK | 2025-04-06 | 600.0
-RENT | AAA111 | George | 2025-04-09 | 300.0
-RENT | CCC333 | George | 2025-04-09 | 300.0
-RENT | BBB222 | Anne | 2025-04-09 | 300.0
-RETURN | CCC333 | George | 2025-04-09 | 300.0
-RENT | CCC333 | Anne | 2025-04-09 | 300.0
+RENT | BBB222 | Person1 | 2025-04-06 | 250.0
+RENT | AAA111 | Person2 | 2025-04-06 | 3.0E9
+RETURN | AAA111 | Person2 | 2025-04-06 | 5.0E14
