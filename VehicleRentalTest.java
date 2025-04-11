@@ -4,14 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class VehicleRentalTest {
-
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-		
+	
+	@Test
+	void TestInstance() {
+		assertFalse(RentalSystem.getInstance() == null);
 	}
 	
 	@Test

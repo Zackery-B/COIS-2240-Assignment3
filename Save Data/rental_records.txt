@@ -22,3 +22,5 @@ RENT | null | John | 2025-04-09 | 25.0
 RETURN | null | John | 2025-04-09 | 25.0
 RENT | AAA111 | George | 2025-04-09 | 3000.0
 RENT | BBB222 | George | 2025-04-09 | 3000.0
+RENT | null | John | 2025-04-10 | 25.0
+RETURN | null | John | 2025-04-10 | 25.0
